@@ -6,7 +6,7 @@ import {Card, Input} from 'react-native-elements';
 import styles from '../homePage/style';
 import Styles from './dopDownStyle';
 
-class DropDown extends Component {
+class DropDowns extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,4 +59,3 @@ class DropDown extends Component {
     );
   }
 }
-export default DropDown;

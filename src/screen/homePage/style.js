@@ -3,7 +3,8 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   body: {
-    height: '100%',
+    height:'100%',
+    // flex:4,
     backgroundColor: 'white',
   },
   headerSectionContainer: {
@@ -47,10 +48,11 @@ const styles = StyleSheet.create({
     paddingTop:10
   },
   bodyContainer: {
-    display:"flex",
-    flex:1,
+    // height:'100%',
+      flex:3,
     flexDirection: 'column',
-    backgroundColor: '#ededed',
+     backgroundColor: '#ededed',
+    //backgroundColor:'white',
   },
   topContainer: {
     height: '7%',
@@ -73,14 +75,14 @@ const styles = StyleSheet.create({
   },
   fromArea:{
     paddingLeft: '2%',
-    paddingTop: '15%',
-    height: '13%',
+    paddingTop: '13%',
+    height: '15%',
     fontSize: 20,
   },
   toArea:{
     paddingLeft: '2%',
-    paddingTop: '20%',
-    height: '18%',
+    paddingTop: '5%',
+    height: '10%',
     fontSize: 20,
   
   },
