@@ -1,71 +1,99 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, Image, TouchableHighlightComponent} from 'react-native';
+import {View, Text, Image, StatusBar} from 'react-native';
 import styles from './style';
 import {Card, Input, Icon} from 'react-native-elements';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import DropDown from '../dropDownComponent/dropDown';
 import DropDownPicker from 'react-native-dropdown-picker';
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import FontAwesomeIcon, {
+  SolidIcons,
+} from '@fortawesome/react-native-fontawesome';
+import {faCoffee} from '@fortawesome/free-solid-svg-icons';
+// import temperature from '../../images/temperature'
 const theme = {
   Card: {},
 };
 const data = [
   {
-    imageUrl: '../../images/temperature.png',
+    imageUrl: require('../../images/scale-1.png'),
+    image: require('../../images/scale.png'),
     title: 'length',
-    backgroundColor: 'red',
+    backgroundColor: '#EDFDF9',
+    color: '#0EC098',
+    border: '#0EC098',
+    dropDownValue: [
+      'kilometre',
+      'metre',
+      'centimetre',
+      'millimetre',
+      'metre',
+      'cm',
+    ],
   },
   {
-    imageUrl: '../../images/temperature.png',
+    imageUrl: require('../../images/hot.png'),
+    image: require('../../images/hot-1.png'),
     title: 'temperature',
-    backgroundColor: 'violet',
+    backgroundColor: 'FFEEF0',
+    color: '#FD5160',
+    border: '#FD5160',
+    dropDownValue: ['fahrenheit', 'celsius', 'kelvin'],
   },
   {
-    imageUrl: '../../images/temperature.png',
+    imageUrl: require('../../images/beaker.png'),
+    image: require('../../images/beaker-1.png'),
     title: 'volume',
-    backgroundColor: 'blue',
+    backgroundColor: '#E8DDFF',
+    color: '#7224FF',
+    border: '#7224FF',
+    dropDownValue: ['litre', 'millilitre', 'gallons'],
   },
 ];
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: 0, enable: true, data: data, open: true, index: ''};
+    this.state = {
+      value: 0,
+      enable: true,
+      data: data,
+      open: true,
+      index: '',
+      itemDropDown: [],
+    };
   }
-  // handleLengthImageClick = () => {
-  //   this.setState({value: 0, enable: false});
-  // };
-  // handleTemperatureClick = () => {
-  //   this.setState({value: 1, enable: false});
-  // };
-  // handleVolumeClick = () => {
-  //   this.setState({value: 2, enable: false});
-  // };
-  handleToggle = (value) => {
+
+  handleToggle = (value, dropDownItem) => {
     console.log(value);
+    this.handleCloseToggle();
     this.setState({
       open: false,
       index: value,
+      itemDropDown: dropDownItem.dropDownValue,
     });
+    console.log(this.state.itemDropDown);
   };
   handleCloseToggle = () => {
     this.setState({
-      open: true,
+      itemDropDown: [],
     });
   };
   renderItem = ({item, index}) => {
     return (
       <View>
         {this.state.open ? (
-          <Card containerStyle={{padding: 0, width: 280, height: 150}}>
-            {/* <Card.Image
-                containerStyle={{overflow: 'hidden', height: 150, width: 277}}
-                source={{uri: item.imageUrl}}
-              /> */}
+          <Card
+            containerStyle={{
+              paddingTop: '10%',
+              width: 280,
+              height: 150,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Image source={item.imageUrl} style={{}} />
 
             <Text
-              onPress={this.handleToggle.bind(this, index)}
+              onPress={this.handleToggle.bind(this, index, item)}
               style={styles.cardName}>
               {item.title}
             </Text>
@@ -78,48 +106,49 @@ class HomeScreen extends Component {
                   padding: 0,
                   width: 280,
                   height: 150,
-                  backgroundColor: item.backgroundColor,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor:item.backgroundColor,
+                  borderColor:item.border
                 }}>
-                <Icon name="rowing" />
-
-                <Text style={styles.cardName}>{item.title}</Text>
+                <Image source={item.image}  />
+                <Text style={{textAlign:'center',fontSize:20,color:item.color}}>{item.title}</Text>
               </Card>
-            ) :  <Card containerStyle={{padding: 0, width: 280, height: 150}}>
-            {/* <Card.Image
-                containerStyle={{overflow: 'hidden', height: 150, width: 277}}
-                source={{uri: item.imageUrl}}
-              /> */}
-            <Icon name="rowing" />
-
-            <Text
-              onPress={this.handleToggle.bind(this, index)}
-              style={styles.cardName}>
-              {item.title}
-            </Text>
-          </Card>}
+            ) : (
+              <Card
+                containerStyle={{
+                  padding: 10,
+                  width: 280,
+                  height: 150,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Image source={item.imageUrl} />
+                <Text
+                  onPress={this.handleToggle.bind(this, index, item)}
+                  style={styles.cardName}>
+                  {item.title}
+                </Text>
+              </Card>
+            )}
           </View>
         )}
       </View>
-      // <View style={styles.imageContainer}>
-      //   <Image source={{uri: '../../images/temperature.png'}} />
-      //   <View>
-      //     <Text>{item.title}</Text>
-      //   </View>
-      // </View>
     );
   };
   render() {
     return (
+      <View>
+      <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = "#1874ed" translucent = {true}/>
       <View style={styles.body}>
-        {/* <View style={styles.headerSectionContainer}> */}
-        <View style={styles.sectionContainer}>
+        {/* <View style={styles.sectionContainer}>
           <View style={styles.headerTitile}>
             <Text style={styles.sectionTitle}>Quanment</Text>
           </View>
           <View style={styles.headerSideTitle}>
             <Text style={styles.sectionSideTitle}>history</Text>
           </View>
-        </View>
+        </View> */}
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Welcome to Quantity Measurement</Text>
         </View>
@@ -131,34 +160,35 @@ class HomeScreen extends Component {
             <View style={styles.cardBox}>
               <Card
                 containerStyle={{
-                  display: 'flex',
-                  flexDirection: 'column',
+                  // display: 'flex',
+                  // flex:1,
+                  flexDirection: 'row',
                   flexWrap: 'wrap',
-                  height: '23%',
+                  height: '27%',
                 }}>
                 <FlatList
                   data={this.state.data}
                   renderItem={this.renderItem}
                   keyExtractor={(item, index) => index}
+                  horizontal={true}
                 />
               </Card>
-
               <View>
                 <Text style={styles.fromArea}>From</Text>
                 <Card>
                   <Input />
                   <DropDownPicker
-                    items={[
-                      {label: 'UK', value: 'uk'},
-                      {label: 'France', value: 'france'},
-                    ]}
+                    items={this.state.itemDropDown}
                     defaultValue={this.state.country}
                     containerStyle={{height: 40}}
-                    style={{backgroundColor: '#fafafa'}}
+                    style={{backgroundColor: 'black'}}
                     itemStyle={{
                       justifyContent: 'flex-start',
                     }}
-                    dropDownStyle={{backgroundColor: '#fafafa'}}
+                    dropDownStyle={{
+                      backgroundColor: 'white',
+                      position: 'absolute',
+                    }}
                     onChangeItem={(item) =>
                       this.setState({
                         country: item.value,
@@ -167,27 +197,26 @@ class HomeScreen extends Component {
                   />
                 </Card>
                 <Text style={styles.toArea}>To</Text>
-                <Card>
-                  <Input />
-                  <DropDownPicker
-                    items={[
-                      {label: 'UK', value: 'uk'},
-                      {label: 'France', value: 'france'},
-                    ]}
-                    defaultValue={this.state.country}
-                    containerStyle={{height: 40}}
-                    style={{backgroundColor: '#fafafa'}}
-                    itemStyle={{
-                      justifyContent: 'flex-start',
-                    }}
-                    dropDownStyle={{backgroundColor: '#fafafa'}}
-                    onChangeItem={(item) =>
-                      this.setState({
-                        country: item.value,
-                      })
-                    }
-                  />
-                </Card>
+                <ScrollView>
+                  <Card>
+                    <Input />
+                    <DropDownPicker
+                      items={this.state.itemDropDown}
+                      defaultValue={this.state.country}
+                      containerStyle={{height: 40}}
+                      style={{backgroundColor: '#fafafa'}}
+                      itemStyle={{
+                        justifyContent: 'flex-start',
+                      }}
+                      dropDownStyle={{backgroundColor: '#fafafa'}}
+                      onChangeItem={(item) =>
+                        this.setState({
+                          country: item.value,
+                        })
+                      }
+                    />
+                  </Card>
+                </ScrollView>
               </View>
             </View>
           </ScrollView>
@@ -195,6 +224,7 @@ class HomeScreen extends Component {
           <View />
         </View>
         {/* </View> */}
+      </View>
       </View>
     );
   }

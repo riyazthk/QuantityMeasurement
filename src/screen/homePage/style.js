@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     fontSize: 22,
+    paddingTop:10
   },
   bodyContainer: {
     display:"flex",
@@ -91,7 +92,8 @@ const styles = StyleSheet.create({
   },
   cardName:{
     textAlign:'center',
-    fontSize:20
+    fontSize:20,
+    // backgroundColor:'blue'
     
   },
   imageContainer:{
