@@ -5,6 +5,7 @@ import styles from './style';
 import {Card, Input, Icon} from 'react-native-elements';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {Dropdown} from 'react-native-material-dropdown';
+import NumericInput from 'react-native-numeric-input'
 import Swiper from 'react-native-custom-swiper';
 import DropDownPicker from 'react-native-dropdown-picker';
 // import temperature from '../../images/temperature'
@@ -39,8 +40,26 @@ const data = [
       {value: 'foot'},
       {value: 'inch'},
     ],
-    measurementValueFrom: ['1', '1000', '100', '0', '0', '0', '0', '0'],
-    measurementValueTo: ['1', '1000', '100', '0', '0', '0', '0', '0'],
+    measurementValueFrom: [
+      '0.001',
+      '1',
+      '100',
+      '1000',
+      '1000000',
+      '0.000621',
+      '3.28084',
+      '39.3701',
+    ],
+    // measurementValueTo: [
+    //   '0.001',
+    //   '1',
+    //   '100',
+    //   '1000',
+    //   '1000000',
+    //   '0.000621',
+    //   '3.28084',
+    //   '39.3701',
+    // ],
   },
   {
     imageUrl: require('../../images/hot.png'),
@@ -59,8 +78,8 @@ const data = [
       {value: 'celsius'},
       {value: 'kelvin'},
     ],
-    measurementValueFrom: ['32', '0', '1000'],
-    measurementValueTo: ['32', '0', '1000'],
+    measurementValueFrom: ['32', '0', '273.15'],
+    // measurementValueTo: ['32', '0', '273.15'],
   },
   {
     imageUrl: require('../../images/beaker.png'),
@@ -80,7 +99,7 @@ const data = [
       {value: 'gallons'},
     ],
     measurementValueFrom: ['1', '1000', '3.78'],
-    measurementValueTo: ['1', '1000', '3.78'],
+    // measurementValueTo: ['1', '1000', '3.78'],
   },
 ];
 class HomeScreen extends Component {
@@ -104,7 +123,8 @@ class HomeScreen extends Component {
       indexValueFrom: '',
       indexValueTo: '',
       typeValueFrom: [],
-      typeValueTo: [],
+      // typeValueTo: [],
+      typeValueTo: '',
     };
     this.controller;
   }
@@ -118,7 +138,7 @@ class HomeScreen extends Component {
       itemDropDownFrom: dropDownItem.dropDownValueFrom,
       itemDropDownTo: dropDownItem.dropDownValueTo,
       typeValueFrom: dropDownItem.measurementValueFrom,
-      typeValueTo: dropDownItem.measurementValueFrom,
+      // typeValueTo: dropDownItem.measurementValueFrom,
     });
     console.log(this.state.itemDropDown);
   };
@@ -129,6 +149,22 @@ class HomeScreen extends Component {
   };
   screenChange = (index) => {
     this.setState({currentIndex: index});
+  };
+  handleToValue=()=>{
+    console.log("entry")
+    if(this.state.currentValueTo!=='' && this.state.currentValueFrom==='kilometre' && this.state.currentValueTo==='metre'){
+      console.log(this.state.typeValueFrom)
+      let value=this.state.typeValueFrom*1000
+    this.setState({
+      typeValueTo:value
+    })
+  }
+    console.log(this.state.typeValueTo)
+  }
+  handleInputValue = (text) => {
+    console.log(typeof(text))
+    this.setState({typeValueFrom:text});
+     this.handleToValue();
   };
   renderItem = ({item, index}) => {
     return (
@@ -245,10 +281,22 @@ class HomeScreen extends Component {
                   <Text style={styles.fromArea}>From</Text>
                   <Card>
                     <Input
+                    numeric
+                    keyboardType={"numeric"}
                       value={
                         this.state.typeValueFrom[this.state.indexValueFrom]
                       }
+                      // onChange={(value) =>
+                        
+                      //   this.setState({
+                      //     typeValueFrom: value,
+                      //   })
+                         
+                      // }
+                      onChangeText={(text)=>this.handleInputValue(text)}
                     />
+                    {/* <NumericInput 
+                    onChange={value => console.log(value)} /> */}
                     <Dropdown
                       label={this.state.label}
                       data={this.state.itemDropDownFrom}
@@ -264,9 +312,12 @@ class HomeScreen extends Component {
                   </Card>
                   <Text style={styles.toArea}>To</Text>
                   <ScrollView>
-                    <Card containerStyle={{flex:1,height:'10%'}}>
+                    <Card containerStyle={{flex: 1, height: '10%'}}>
                       <Input
-                        value={this.state.typeValueTo[this.state.indexValueTo]}
+                        // value={this.state.typeValueTo[this.state.indexValueTo]}
+                         value={this.state.typeValueTo}
+                        
+                        // onPress={this.getValue}
                       />
                       <Dropdown
                         label={this.state.label}
