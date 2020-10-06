@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import {View, Text, Image, StatusBar} from 'react-native';
 import styles from './style';
 import {Card, Input, Icon} from 'react-native-elements';
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import {FlatList, ScrollView, TextInput} from 'react-native-gesture-handler';
 import {Dropdown} from 'react-native-material-dropdown';
-import NumericInput from 'react-native-numeric-input'
+import NumericInput from 'react-native-numeric-input';
 import Swiper from 'react-native-custom-swiper';
 import DropDownPicker from 'react-native-dropdown-picker';
 // import temperature from '../../images/temperature'
@@ -40,16 +40,16 @@ const data = [
       {value: 'foot'},
       {value: 'inch'},
     ],
-    measurementValueFrom: [
-      '0.001',
-      '1',
-      '100',
-      '1000',
-      '1000000',
-      '0.000621',
-      '3.28084',
-      '39.3701',
-    ],
+    // measurementValueFrom: [
+    //   '0.001',
+    //   '1',
+    //   '100',
+    //   '1000',
+    //   '1000000',
+    //   '0.000621',
+    //   '3.28084',
+    //   '39.3701',
+    // ],
     // measurementValueTo: [
     //   '0.001',
     //   '1',
@@ -78,7 +78,7 @@ const data = [
       {value: 'celsius'},
       {value: 'kelvin'},
     ],
-    measurementValueFrom: ['32', '0', '273.15'],
+    // measurementValueFrom: ['32', '0', '273.15'],
     // measurementValueTo: ['32', '0', '273.15'],
   },
   {
@@ -98,7 +98,7 @@ const data = [
       {value: 'millilitre'},
       {value: 'gallons'},
     ],
-    measurementValueFrom: ['1', '1000', '3.78'],
+    // measurementValueFrom: ['1', '1000', '3.78'],
     // measurementValueTo: ['1', '1000', '3.78'],
   },
 ];
@@ -122,11 +122,12 @@ class HomeScreen extends Component {
       label: 'select a type',
       indexValueFrom: '',
       indexValueTo: '',
-      typeValueFrom: [],
+      typeValueFrom: 0,
       // typeValueTo: [],
       typeValueTo: '',
     };
     this.controller;
+    this.handleInputValue = this.handleInputValue.bind(this);
   }
 
   handleToggle = (value, dropDownItem) => {
@@ -137,7 +138,7 @@ class HomeScreen extends Component {
       index: value,
       itemDropDownFrom: dropDownItem.dropDownValueFrom,
       itemDropDownTo: dropDownItem.dropDownValueTo,
-      typeValueFrom: dropDownItem.measurementValueFrom,
+      // typeValueFrom: dropDownItem.measurementValueFrom,
       // typeValueTo: dropDownItem.measurementValueFrom,
     });
     console.log(this.state.itemDropDown);
@@ -150,22 +151,21 @@ class HomeScreen extends Component {
   screenChange = (index) => {
     this.setState({currentIndex: index});
   };
-  handleToValue=()=>{
-    console.log("entry")
-    if(this.state.currentValueTo!=='' && this.state.currentValueFrom==='kilometre' && this.state.currentValueTo==='metre'){
-      console.log(this.state.typeValueFrom)
-      let value=this.state.typeValueFrom*1000
-    this.setState({
-      typeValueTo:value
-    })
+ 
+  handleInputValue(e) {
+    if (
+      this.state.currentValueTo !== '' &&
+      this.state.currentValueFrom === 'kilometre' &&
+      this.state.currentValueTo === 'metre'
+    ) {
+      console.log('CVCV', e);
+      let value = e * 1000;
+      this.setState({
+        typeValueTo: value.toString(),
+      });
+      console.log('riyaz', typeof this.state.typeValueTo);
+    }
   }
-    console.log(this.state.typeValueTo)
-  }
-  handleInputValue = (text) => {
-    console.log(typeof(text))
-    this.setState({typeValueFrom:text});
-     this.handleToValue();
-  };
   renderItem = ({item, index}) => {
     return (
       <View>
@@ -281,22 +281,13 @@ class HomeScreen extends Component {
                   <Text style={styles.fromArea}>From</Text>
                   <Card>
                     <Input
-                    numeric
-                    keyboardType={"numeric"}
-                      value={
-                        this.state.typeValueFrom[this.state.indexValueFrom]
+                      value={this.state.typeValueFrom}
+                      onChange={(value) =>
+                        this.setState({typeValueFrom: value})
                       }
-                      // onChange={(value) =>
-                        
-                      //   this.setState({
-                      //     typeValueFrom: value,
-                      //   })
-                         
-                      // }
-                      onChangeText={(text)=>this.handleInputValue(text)}
+                      onChangeText={this.handleInputValue}
                     />
-                    {/* <NumericInput 
-                    onChange={value => console.log(value)} /> */}
+
                     <Dropdown
                       label={this.state.label}
                       data={this.state.itemDropDownFrom}
@@ -313,12 +304,7 @@ class HomeScreen extends Component {
                   <Text style={styles.toArea}>To</Text>
                   <ScrollView>
                     <Card containerStyle={{flex: 1, height: '10%'}}>
-                      <Input
-                        // value={this.state.typeValueTo[this.state.indexValueTo]}
-                         value={this.state.typeValueTo}
-                        
-                        // onPress={this.getValue}
-                      />
+                      <Input value={this.state.typeValueTo} />
                       <Dropdown
                         label={this.state.label}
                         data={this.state.itemDropDownTo}
