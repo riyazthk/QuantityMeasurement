@@ -154,6 +154,11 @@ class HomeScreen extends Component {
   };
 
   handleInputValue(e) {
+    console.log("getValueFrom",e)
+    this.setState({
+      typeValueFrom:e
+    })
+    console.log("final",this.state.typeValueFrom)
     const value = calculateValues(
       e,
       this.state.currentValueFrom,
@@ -163,7 +168,7 @@ class HomeScreen extends Component {
       this.state.indexValueTo
     );
     this.setState({
-      typeValueTo: value.toString(),
+      typeValueTo: value.toString()
     });
   }
   renderItem = ({item, index}) => {
@@ -282,10 +287,9 @@ class HomeScreen extends Component {
                   <Card>
                     <Input
                       value={this.state.typeValueFrom}
-                      onChange={(value) =>
-                        this.setState({typeValueFrom: value})
-                      }
-                      onChangeText={this.handleInputValue}
+                      //onChange={(event)=>this.handleInputValue(event)}
+                      
+                       onChangeText={(value)=>this.handleInputValue(value)}
                     />
 
                     <Dropdown
