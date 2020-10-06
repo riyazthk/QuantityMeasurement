@@ -8,6 +8,7 @@ import {Dropdown} from 'react-native-material-dropdown';
 import NumericInput from 'react-native-numeric-input';
 import Swiper from 'react-native-custom-swiper';
 import DropDownPicker from 'react-native-dropdown-picker';
+import calculateValues from '../quantityCalculation/calculateValues';
 // import temperature from '../../images/temperature'
 const theme = {
   Card: {},
@@ -78,7 +79,7 @@ const data = [
       {value: 'celsius'},
       {value: 'kelvin'},
     ],
-    // measurementValueFrom: ['32', '0', '273.15'],
+    measurementValueFrom: ['32', '0', '273.15'],
     // measurementValueTo: ['32', '0', '273.15'],
   },
   {
@@ -115,8 +116,8 @@ class HomeScreen extends Component {
       itemDropDownTo: [],
       currentIndex: 0,
       mesurementType: '',
-      pickerOpenFrom: false,
-      pickerOpenTo: false,
+      // pickerOpenFrom: false,
+      // pickerOpenTo: false,
       currentValueFrom: '',
       currentValueTo: '',
       label: 'select a type',
@@ -151,20 +152,19 @@ class HomeScreen extends Component {
   screenChange = (index) => {
     this.setState({currentIndex: index});
   };
- 
+
   handleInputValue(e) {
-    if (
-      this.state.currentValueTo !== '' &&
-      this.state.currentValueFrom === 'kilometre' &&
-      this.state.currentValueTo === 'metre'
-    ) {
-      console.log('CVCV', e);
-      let value = e * 1000;
-      this.setState({
-        typeValueTo: value.toString(),
-      });
-      console.log('riyaz', typeof this.state.typeValueTo);
-    }
+    const value = calculateValues(
+      e,
+      this.state.currentValueFrom,
+      this.state.currentValueTo,
+      this.state.index,
+      this.state.indexValueFrom,
+      this.state.indexValueTo
+    );
+    this.setState({
+      typeValueTo: value.toString(),
+    });
   }
   renderItem = ({item, index}) => {
     return (
