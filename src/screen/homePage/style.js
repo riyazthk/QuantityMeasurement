@@ -75,14 +75,14 @@ const styles = StyleSheet.create({
   },
   fromArea:{
     paddingLeft: '2%',
-    paddingTop: '13%',
-    height: '15%',
+    paddingTop: '2%',
+    height: '7%',
     fontSize: 20,
   },
   toArea:{
     paddingLeft: '2%',
-    paddingTop: '5%',
-    height: '10%',
+    paddingTop: '2%',
+    height: '7%',
     fontSize: 20,
   
   },

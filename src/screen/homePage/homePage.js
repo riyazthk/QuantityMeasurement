@@ -179,7 +179,7 @@ class HomeScreen extends Component {
             containerStyle={{
               paddingTop: '10%',
               width: 280,
-              height: 150,
+              height: 120,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -199,7 +199,7 @@ class HomeScreen extends Component {
                 containerStyle={{
                   padding: 0,
                   width: 280,
-                  height: 150,
+                  height: 120,
                   justifyContent: 'center',
                   alignItems: 'center',
                   backgroundColor: item.backgroundColor,
@@ -222,7 +222,7 @@ class HomeScreen extends Component {
                 containerStyle={{
                   padding: 10,
                   width: 280,
-                  height: 150,
+                  height: 120,
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
