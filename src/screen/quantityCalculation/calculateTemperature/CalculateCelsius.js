@@ -7,6 +7,9 @@ const CalculateCelsius = (data, toIndex) => {
   } else if (toIndex === 2) {
     let value = data + lengthDefaultValues[toIndex];
     return value;
+  } else if (toIndex === 1) {
+    let value = data * lengthDefaultValues[toIndex];
+    return value;
   }
 };
 export default CalculateCelsius;

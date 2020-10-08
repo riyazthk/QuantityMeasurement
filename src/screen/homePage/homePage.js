@@ -28,8 +28,12 @@ class HomeScreen extends Component {
       indexValueTo: '',
       typeValueFrom: 0,
       typeValueTo: '',
+      countFrom: 0,
+      countTo:0,
     };
     this.handleInputValue = this.handleInputValue.bind(this);
+    this.handleDropDownFrom = this.handleDropDownFrom.bind(this);
+    this.handleDropDownTo = this.handleDropDownTo.bind(this);
   }
 
   handleToggle = (value, dropDownItem) => {
@@ -49,7 +53,28 @@ class HomeScreen extends Component {
   screenChange = (index) => {
     this.setState({currentIndex: index});
   };
-
+  handleDropDownFrom(value, index) {
+    this.setState({
+      currentValueFrom: value,
+      label: '',
+      indexValueFrom: index,
+      countFrom: this.state.countFrom + 1,
+    });
+    if (this.state.countFrom > 1) {
+      this.handleInputValue(this.state.typeValueFrom);
+    }
+  }
+  handleDropDownTo(value, index) {
+    this.setState({
+      currentValueTo: value,
+      label: '',
+      indexValueTo: index,
+      countTo: this.state.countTo + 1,
+    });
+    if (this.state.countTo > 1) {
+      this.handleInputValue(this.state.typeValueFrom);
+    }
+  }
   handleInputValue(e) {
     this.setState({
       typeValueFrom: e,
@@ -162,13 +187,16 @@ class HomeScreen extends Component {
                     <Dropdown
                       label={this.state.label}
                       data={this.state.itemDropDownFrom}
-                      onChangeText={(value, index) => {
-                        this.setState({
-                          currentValueFrom: value,
-                          label: '',
-                          indexValueFrom: index,
-                        });
-                      }}
+                      // onChangeText={(value, index) => {
+                      //   this.setState({
+                      //     currentValueFrom: value,
+                      //     label: '',
+                      //     indexValueFrom: index,
+                      //   });
+                      // }}
+                      onChangeText={(value, index) =>
+                        this.handleDropDownFrom(value, index)
+                      }
                       value={this.state.currentValueFrom}
                       useNativeDriver={true}
                     />
@@ -180,13 +208,14 @@ class HomeScreen extends Component {
                       <Dropdown
                         label={this.state.label}
                         data={this.state.itemDropDownTo}
-                        onChangeText={(value, index) => {
-                          this.setState({
-                            currentValueTo: value,
-                            label: '',
-                            indexValueTo: index,
-                          });
-                        }}
+                        // onChangeText={(value, index) => {
+                        //   this.setState({
+                        //     currentValueTo: value,
+                        //     label: '',
+                        //     indexValueTo: index,
+                        //   });
+                        // }}
+                        onChangeText={(value,index)=>this.handleDropDownTo(value,index)}
                         value={this.state.currentValueTo}
                         useNativeDriver={true}
                       />

@@ -8,6 +8,9 @@ const CalculateKelvin = (data, toIndex) => {
   } else if (toIndex === 0) {
     let values = (data - lengthDefaultValues[2]) * 1.8 + lengthDefaultValues[1];
     return values;
+  } else if (toIndex === 2) {
+    let values = data * lengthDefaultValues[toIndex];
+    return values;
   }
 };
 export default CalculateKelvin;

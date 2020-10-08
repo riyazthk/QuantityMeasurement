@@ -7,6 +7,9 @@ const CalculateFahrenheit = (data, toIndex) => {
   } else if (toIndex === 2) {
     let value = (data - 32) * 0.55 + lengthDefaultValues[toIndex];
     return value;
+  } else if (toIndex === 0) {
+    let value = data * lengthDefaultValues[toIndex];
+    return value;
   }
 };
 export default CalculateFahrenheit;
