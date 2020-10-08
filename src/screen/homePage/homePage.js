@@ -58,6 +58,8 @@ class HomeScreen extends Component {
       currentValueFrom: value,
       label: '',
       indexValueFrom: index,
+      currentValueTo: '',
+      typeValueTo:'',
       countFrom: this.state.countFrom + 1,
     });
     if (this.state.countFrom > 1) {
@@ -76,20 +78,22 @@ class HomeScreen extends Component {
     }
   }
   handleInputValue(e) {
-    this.setState({
-      typeValueFrom: e,
-    });
-    const value = CalculateValues(
-      e,
-      this.state.currentValueFrom,
-      this.state.currentValueTo,
-      this.state.index,
-      this.state.indexValueFrom,
-      this.state.indexValueTo,
-    );
-    this.setState({
-      typeValueTo: value.toString(),
-    });
+    if (this.state.currentValueTo !== '') {
+      this.setState({
+        typeValueFrom: e,
+      });
+      const value = CalculateValues(
+        e,
+        this.state.currentValueFrom,
+        this.state.currentValueTo,
+        this.state.index,
+        this.state.indexValueFrom,
+        this.state.indexValueTo,
+      );
+      this.setState({
+        typeValueTo: value.toString(),
+      });
+    }
   }
   renderItem = ({item, index}) => {
     return (

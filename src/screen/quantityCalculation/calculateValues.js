@@ -4,7 +4,6 @@ import CalculateTemperature from './calculateTemperature/CalculateTemperature';
 import CalculateVolume from './calculateVolume/CalculateVolume';
 
 const CalculateValues = (data, value1, value2, index, fromIndex, toIndex) => {
-
   if (index === 0) {
     const result = CalculateLengthType(data, fromIndex, toIndex);
     return result;
