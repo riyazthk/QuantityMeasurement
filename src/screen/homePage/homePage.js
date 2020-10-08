@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, Image, StatusBar} from 'react-native';
+import {View, Text, Image, StatusBar, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {Card, Input} from 'react-native-elements';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
@@ -29,7 +29,7 @@ class HomeScreen extends Component {
       typeValueFrom: 0,
       typeValueTo: '',
       countFrom: 0,
-      countTo:0,
+      countTo: 0,
     };
     this.handleInputValue = this.handleInputValue.bind(this);
     this.handleDropDownFrom = this.handleDropDownFrom.bind(this);
@@ -95,16 +95,14 @@ class HomeScreen extends Component {
     return (
       <View>
         {this.state.open ? (
-          <Card containerStyle={styles.defaultCard}>
-            <View style={styles.defaultStyle}>
-              <Image source={item.imageUrl} />
-            </View>
-            <Text
-              onPress={this.handleToggle.bind(this, index, item)}
-              style={styles.cardName}>
-              {item.title}
-            </Text>
-          </Card>
+          <TouchableOpacity onPress={this.handleToggle.bind(this, index, item)}>
+            <Card containerStyle={styles.defaultCard}>
+              <View style={styles.defaultStyle}>
+                <Image source={item.imageUrl} />
+              </View>
+              <Text style={styles.cardName}>{item.title}</Text>
+            </Card>
+          </TouchableOpacity>
         ) : (
           <View>
             {this.state.index === index ? (
@@ -133,16 +131,15 @@ class HomeScreen extends Component {
                 </Text>
               </Card>
             ) : (
-              <Card containerStyle={styles.greyCard}>
-                <View style={styles.viewImageCard}>
-                  <Image source={item.imageUrl} />
-                </View>
-                <Text
-                  onPress={this.handleToggle.bind(this, index, item)}
-                  style={styles.cardName}>
-                  {item.title}
-                </Text>
-              </Card>
+              <TouchableOpacity
+                onPress={this.handleToggle.bind(this, index, item)}>
+                <Card containerStyle={styles.greyCard}>
+                  <View style={styles.viewImageCard}>
+                    <Image source={item.imageUrl} />
+                  </View>
+                  <Text style={styles.cardName}>{item.title}</Text>
+                </Card>
+              </TouchableOpacity>
             )}
           </View>
         )}
@@ -187,13 +184,6 @@ class HomeScreen extends Component {
                     <Dropdown
                       label={this.state.label}
                       data={this.state.itemDropDownFrom}
-                      // onChangeText={(value, index) => {
-                      //   this.setState({
-                      //     currentValueFrom: value,
-                      //     label: '',
-                      //     indexValueFrom: index,
-                      //   });
-                      // }}
                       onChangeText={(value, index) =>
                         this.handleDropDownFrom(value, index)
                       }
@@ -208,14 +198,9 @@ class HomeScreen extends Component {
                       <Dropdown
                         label={this.state.label}
                         data={this.state.itemDropDownTo}
-                        // onChangeText={(value, index) => {
-                        //   this.setState({
-                        //     currentValueTo: value,
-                        //     label: '',
-                        //     indexValueTo: index,
-                        //   });
-                        // }}
-                        onChangeText={(value,index)=>this.handleDropDownTo(value,index)}
+                        onChangeText={(value, index) =>
+                          this.handleDropDownTo(value, index)
+                        }
                         value={this.state.currentValueTo}
                         useNativeDriver={true}
                       />
