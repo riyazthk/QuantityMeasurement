@@ -84,6 +84,7 @@ class HomeScreen extends Component {
           <View>
             {this.state.index === index ? (
               <Card
+                // eslint-disable-next-line react-native/no-inline-styles
                 containerStyle={{
                   padding: 0,
                   width: 280,
@@ -97,6 +98,7 @@ class HomeScreen extends Component {
                   <Image source={item.image} />
                 </View>
                 <Text
+                  // eslint-disable-next-line react-native/no-inline-styles
                   style={{
                     textAlign: 'center',
                     fontSize: 20,
