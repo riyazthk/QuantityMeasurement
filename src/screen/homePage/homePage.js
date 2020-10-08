@@ -5,8 +5,8 @@ import styles from './style';
 import {Card, Input} from 'react-native-elements';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {Dropdown} from 'react-native-material-dropdown';
-import calculateValues from '../quantityCalculation/calculateValues';
 import {data} from '../arrayData/Data';
+import CalculateValues from '../quantityCalculation/calculateValues';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -54,7 +54,7 @@ class HomeScreen extends Component {
     this.setState({
       typeValueFrom: e,
     });
-    const value = calculateValues(
+    const value = CalculateValues(
       e,
       this.state.currentValueFrom,
       this.state.currentValueTo,

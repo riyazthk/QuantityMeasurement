@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-import CalculateLength from './calculateLengthType';
+import CalculateLength from './CalculateLengthType';
 import CalculateTemperature from './calculateTemperature/CalculateTemperature';
 import CalculateVolume from './calculateVolume/CalculateVolume';
 
