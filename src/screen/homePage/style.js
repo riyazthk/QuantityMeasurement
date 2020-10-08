@@ -3,23 +3,17 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   body: {
-    height:'100%',
-    // flex:4,
+    height: '100%',
     backgroundColor: 'white',
   },
   headerSectionContainer: {
     backgroundColor: 'blue',
   },
-
   headerTitile: {
     height: 27,
     width: '70%',
     paddingTop: '3%',
   },
-  // headerSectionContainer:{
-  //  display:'flex',
-  //  flexDirection:'column'
-  // },
   sectionContainer: {
     paddingHorizontal: 20,
     flexDirection: 'row',
@@ -45,21 +39,18 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     fontSize: 22,
-    paddingTop:10
+    paddingTop: 10,
   },
   bodyContainer: {
-    // height:'100%',
-      flex:3,
+    flex: 3,
     flexDirection: 'column',
-     backgroundColor: '#ededed',
-    //backgroundColor:'white',
+    backgroundColor: '#ededed',
   },
   topContainer: {
     height: '7%',
     justifyContent: 'space-around',
     paddingLeft: '2%',
     paddingTop: '11%',
-    //  backgroundColor:'violet',
   },
   containerTitle: {
     fontSize: 23,
@@ -69,38 +60,70 @@ const styles = StyleSheet.create({
     paddingRight: '5%',
   },
   styleCards: {},
-  
-  align:{
-    height:'30%',
+  align: {
+    height: '30%',
   },
-  fromArea:{
+  fromArea: {
     paddingLeft: '2%',
     paddingTop: '2%',
     height: '7%',
     fontSize: 20,
   },
-  toArea:{
+  toArea: {
     paddingLeft: '2%',
     paddingTop: '2%',
     height: '7%',
     fontSize: 20,
-  
   },
-  headerCard:{
-    display:'flex',
-    flexDirection:'row',
-    flexWrap:'wrap',
-    alignSelf:'baseline'
+  headerCard: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignSelf: 'baseline',
   },
-  cardName:{
-    textAlign:'center',
-    fontSize:20,
-    // backgroundColor:'blue'
-    
+  cardName: {
+    textAlign: 'center',
+    fontSize: 20,
   },
-  imageContainer:{
-    height:100,
-    width:100
-  }
+  imageContainer: {
+    height: 100,
+    width: 100,
+  },
+  viewImageCard: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  toCard: {
+    flex: 1,
+    height: '10%',
+  },
+  outerCardImage: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    height: '25%',
+  },
+  greyCard: {
+    padding: 10,
+    width: 280,
+    height: 120,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  colorStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  defaultStyle:{
+    alignItems: 'center',
+  },
+  defaultCard:{
+    paddingTop: '10%',
+    width: 280,
+    height: 120,
+    alignItems: 'center',
+  },
 });
 export default styles;
+// textAlign: 'center',
+//                     fontSize: 20,
+//                     color: item.color,

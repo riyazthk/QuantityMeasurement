@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 const lengthDefaultValues = [1, 32, 273.15];
-const CalculateFahrenheit = (data, fromIndex, toIndex) => {
+const CalculateFahrenheit = (data, toIndex) => {
   if (toIndex === 1) {
     let value = (data - lengthDefaultValues[toIndex]) * 0.55;
     return value;

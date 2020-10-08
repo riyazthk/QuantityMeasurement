@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 const lengthDefaultValues = [32, 1, 273.15];
-const CalculateCelsius = (data, fromIndex, toIndex) => {
+const CalculateCelsius = (data, toIndex) => {
   if (toIndex === 0) {
     let value = data * 1.8 + lengthDefaultValues[toIndex];
     return value;

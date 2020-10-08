@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 const lengthDefaultValues = [1, 32, 273.15];
 
-const CalculateKelvin = (data, fromIndex, toIndex) => {
+const CalculateKelvin = (data, toIndex) => {
   if (toIndex === 1) {
     let values = data - lengthDefaultValues[2];
     return values;

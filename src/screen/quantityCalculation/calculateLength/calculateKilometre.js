@@ -9,13 +9,8 @@ const lengthDefaultValues = [
   3281,
   39370,
 ];
-const CalculateKilometre = (data,fromIndex,toIndex) => {
-  if (fromIndex < toIndex) {
-    let value = data * lengthDefaultValues[toIndex];
-    console.log('result', value);
-    console.log('rea', typeof value);
-    return value;
-  } 
-  
+const CalculateKilometre = (data, toIndex) => {
+  let value = data * lengthDefaultValues[toIndex];
+  return value;
 };
 export default CalculateKilometre;

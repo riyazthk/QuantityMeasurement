@@ -9,7 +9,7 @@ const lengthDefaultValues = [
   0.00328084,
   0.0393701,
 ];
-const CalculateMillimetre = (data, fromIndex, toIndex) => {
+const CalculateMillimetre = (data, toIndex) => {
   let value = data * lengthDefaultValues[toIndex];
   return value;
 };

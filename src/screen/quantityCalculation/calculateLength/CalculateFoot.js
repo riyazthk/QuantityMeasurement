@@ -9,7 +9,7 @@ const lengthDefaultValues = [
   1,
   12,
 ];
-const CalculateFoot = (data, fromIndex, toIndex) => {
+const CalculateFoot = (data, toIndex) => {
   let value = data * lengthDefaultValues[toIndex];
   return value;
 };

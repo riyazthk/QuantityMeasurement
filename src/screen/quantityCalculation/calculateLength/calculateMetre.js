@@ -10,7 +10,7 @@ const lengthDefaultValues = [
   3.281,
   39.37,
 ];
-const CalculateMetre = (data, fromIndex, toIndex) => {
+const CalculateMetre = (data, toIndex) => {
   let value = data * lengthDefaultValues[toIndex];
   return value;
 };

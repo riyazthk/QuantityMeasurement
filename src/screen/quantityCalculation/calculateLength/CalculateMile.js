@@ -9,7 +9,7 @@ const lengthDefaultValues = [
   5280,
   63360,
 ];
-const CalculateMile = (data, fromIndex, toIndex) => {
+const CalculateMile = (data, toIndex) => {
   let value = data * lengthDefaultValues[toIndex];
   return value;
 };
