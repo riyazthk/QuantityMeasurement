@@ -6,7 +6,7 @@ import {Card, Input} from 'react-native-elements';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {Dropdown} from 'react-native-material-dropdown';
 import {data} from '../arrayData/Data';
-import CalculateValues from '../quantityCalculation/calculateValues';
+import CalculateValues from '../quantityCalculation/CalculateValues';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -170,6 +170,7 @@ class HomeScreen extends Component {
                         });
                       }}
                       value={this.state.currentValueFrom}
+                      useNativeDriver={true}
                     />
                   </Card>
                   <Text style={styles.toArea}>To</Text>
@@ -187,6 +188,7 @@ class HomeScreen extends Component {
                           });
                         }}
                         value={this.state.currentValueTo}
+                        useNativeDriver={true}
                       />
                     </Card>
                   </ScrollView>
