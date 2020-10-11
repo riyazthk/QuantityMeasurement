@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   titleContainer: {
-    height: '10%',
+    height: '13%',
     backgroundColor: '#1874ed',
     justifyContent: 'space-around',
   },
@@ -47,10 +47,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#ededed',
   },
   topContainer: {
-    height: '7%',
-    justifyContent: 'space-around',
-    paddingLeft: '2%',
-    paddingTop: '11%',
+    height: '5%',
+    //justifyContent: 'space-around',
+    // paddingLeft: '2%',
+     paddingTop: '1%',
+    //backgroundColor:'black',
   },
   containerTitle: {
     fontSize: 23,
@@ -67,13 +68,13 @@ const styles = StyleSheet.create({
     paddingLeft: '2%',
     paddingTop: '2%',
     height: '7%',
-    fontSize: 20,
+    fontSize: 23,
   },
   toArea: {
     paddingLeft: '2%',
     paddingTop: '2%',
     height: '7%',
-    fontSize: 20,
+    fontSize: 23,
   },
   headerCard: {
     display: 'flex',
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
   },
   toCard: {
     flex: 1,
-    height: '10%',
+    height:70,
   },
   outerCardImage: {
     flexDirection: 'row',
@@ -122,6 +123,9 @@ const styles = StyleSheet.create({
     height: 120,
     alignItems: 'center',
   },
+  // fromCard:{
+  //   height:'70%',
+  // },
 });
 export default styles;
 // textAlign: 'center',

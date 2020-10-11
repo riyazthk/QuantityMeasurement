@@ -197,7 +197,7 @@ class HomeScreen extends Component {
                   </Card>
                   <Text style={styles.toArea}>To</Text>
                   <ScrollView>
-                    <Card containerStyle={styles.toCard}>
+                    <Card >
                       <Input value={this.state.typeValueTo} />
                       <Dropdown
                         label={this.state.label}
