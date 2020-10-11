@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   body: {
-    height: '100%',
+     height: '100%',
     backgroundColor: 'white',
   },
   headerSectionContainer: {
