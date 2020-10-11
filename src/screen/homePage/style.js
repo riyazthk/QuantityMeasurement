@@ -123,11 +123,5 @@ const styles = StyleSheet.create({
     height: 120,
     alignItems: 'center',
   },
-  // fromCard:{
-  //   height:'70%',
-  // },
 });
 export default styles;
-// textAlign: 'center',
-//                     fontSize: 20,
-//                     color: item.color,

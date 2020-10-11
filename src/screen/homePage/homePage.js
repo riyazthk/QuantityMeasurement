@@ -59,7 +59,7 @@ class HomeScreen extends Component {
       label: '',
       indexValueFrom: index,
       currentValueTo: '',
-      typeValueTo:'',
+      typeValueTo: '',
       countFrom: this.state.countFrom + 1,
     });
     if (this.state.countFrom > 1) {
@@ -183,6 +183,7 @@ class HomeScreen extends Component {
                     <Input
                       value={this.state.typeValueFrom}
                       onChangeText={(value) => this.handleInputValue(value)}
+                      keyboardType={'numeric'}
                     />
 
                     <Dropdown
@@ -197,8 +198,10 @@ class HomeScreen extends Component {
                   </Card>
                   <Text style={styles.toArea}>To</Text>
                   <ScrollView>
-                    <Card >
-                      <Input value={this.state.typeValueTo} />
+                    <Card>
+                      <Input value={this.state.typeValueTo}
+                      keyboardType={'numeric'}
+                      />
                       <Dropdown
                         label={this.state.label}
                         data={this.state.itemDropDownTo}
