@@ -1,15 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, Image, StatusBar, TouchableOpacity,TextInput} from 'react-native';
+import {View, Text, Image, StatusBar, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {Card, Input} from 'react-native-elements';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {Dropdown} from 'react-native-material-dropdown';
 import {data} from '../arrayData/Data';
 import CalculateValues from '../quantityCalculation/CalculateValues';
-const regexValidateInputType = new RegExp(
-  /^\d+(\.\d{1,2})?$/
-);
+const regexValidateInputType = new RegExp(/^\d+(\.\d{1,2})?$/);
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +30,7 @@ class HomeScreen extends Component {
       typeValueTo: '',
       countFrom: 0,
       countTo: 0,
-      errorMessage:'',
+      errorMessage: '',
     };
     this.handleInputValue = this.handleInputValue.bind(this);
     this.handleDropDownFrom = this.handleDropDownFrom.bind(this);
@@ -46,10 +44,10 @@ class HomeScreen extends Component {
       index: value,
       itemDropDownFrom: dropDownItem.dropDownValueFrom,
       itemDropDownTo: dropDownItem.dropDownValueTo,
-      currentValueFrom:'',
-      currentValueTo:'',
-      typeValueFrom:'',
-      typeValueTo:'',
+      currentValueFrom: '',
+      currentValueTo: '',
+      typeValueFrom: '',
+      typeValueTo: '',
     });
   };
   handleCloseToggle = () => {
@@ -65,8 +63,8 @@ class HomeScreen extends Component {
       currentValueFrom: value,
       label: '',
       indexValueFrom: index,
-      currentValueTo: '',
-      typeValueTo: '',
+      // currentValueTo: '',
+      // typeValueTo: '',
       countFrom: this.state.countFrom + 1,
     });
     if (this.state.countFrom > 1) {
@@ -85,10 +83,13 @@ class HomeScreen extends Component {
     }
   }
   handleInputValue(e) {
-    if (this.state.currentValueTo !== '' && regexValidateInputType.test(e)) {
+    if (
+      (this.state.currentValueTo !== '' && regexValidateInputType.test(e)) ||
+      (this.state.currentValueFrom !== '' && regexValidateInputType.test(e))
+    ) {
       this.setState({
         typeValueFrom: e,
-        errorMessage:'',
+        errorMessage: '',
       });
       const value = CalculateValues(
         e,
@@ -101,7 +102,7 @@ class HomeScreen extends Component {
       });
     } else {
       this.setState({
-        errorMessage:'invalid data',
+        errorMessage: 'invalid data',
       });
     }
   }
@@ -209,8 +210,7 @@ class HomeScreen extends Component {
                   <Text style={styles.toArea}>To</Text>
                   <ScrollView>
                     <Card>
-                      <Input value={this.state.typeValueTo}
-                      />
+                      <Input value={this.state.typeValueTo} />
                       <Dropdown
                         label={this.state.label}
                         data={this.state.itemDropDownTo}
