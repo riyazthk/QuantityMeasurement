@@ -9,8 +9,8 @@ const lengthDefaultValues = [
   0.032,
   0.0394,
   ];
- const CalculateCentimetre = (data,toIndex) => {
- let value = data * lengthDefaultValues[toIndex];
+ const CalculateCentimetre = (data,quantityTypeToIndex) => {
+ let value = data * lengthDefaultValues[quantityTypeToIndex];
  return value;
 };
 export default CalculateCentimetre;

@@ -9,8 +9,9 @@ const lengthDefaultValues = [
   3.2808,
   3.93701,
 ];
-const CalculateMicrometre = (data, toIndex) => {
-  let value = data * lengthDefaultValues[toIndex];
+const CalculateMicrometre = (data, quantityTypeToIndex) => {
+
+  let value = data * lengthDefaultValues[quantityTypeToIndex];
   return value;
 };
 export default CalculateMicrometre;

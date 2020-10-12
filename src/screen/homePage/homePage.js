@@ -1,13 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, Image, StatusBar, TouchableOpacity} from 'react-native';
+import {View, Text, Image, StatusBar, TouchableOpacity,TextInput} from 'react-native';
 import styles from './style';
 import {Card, Input} from 'react-native-elements';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {Dropdown} from 'react-native-material-dropdown';
 import {data} from '../arrayData/Data';
 import CalculateValues from '../quantityCalculation/CalculateValues';
-
+const regexValidateInputType = new RegExp(
+  /^\d+(\.\d{1,2})?$/
+);
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +32,7 @@ class HomeScreen extends Component {
       typeValueTo: '',
       countFrom: 0,
       countTo: 0,
+      errorMessage:'',
     };
     this.handleInputValue = this.handleInputValue.bind(this);
     this.handleDropDownFrom = this.handleDropDownFrom.bind(this);
@@ -43,6 +46,10 @@ class HomeScreen extends Component {
       index: value,
       itemDropDownFrom: dropDownItem.dropDownValueFrom,
       itemDropDownTo: dropDownItem.dropDownValueTo,
+      currentValueFrom:'',
+      currentValueTo:'',
+      typeValueFrom:'',
+      typeValueTo:'',
     });
   };
   handleCloseToggle = () => {
@@ -78,20 +85,23 @@ class HomeScreen extends Component {
     }
   }
   handleInputValue(e) {
-    if (this.state.currentValueTo !== '') {
+    if (this.state.currentValueTo !== '' && regexValidateInputType.test(e)) {
       this.setState({
         typeValueFrom: e,
+        errorMessage:'',
       });
       const value = CalculateValues(
         e,
-        this.state.currentValueFrom,
-        this.state.currentValueTo,
         this.state.index,
         this.state.indexValueFrom,
         this.state.indexValueTo,
       );
       this.setState({
         typeValueTo: value.toString(),
+      });
+    } else {
+      this.setState({
+        errorMessage:'invalid data',
       });
     }
   }
@@ -183,7 +193,7 @@ class HomeScreen extends Component {
                     <Input
                       value={this.state.typeValueFrom}
                       onChangeText={(value) => this.handleInputValue(value)}
-                      keyboardType={'numeric'}
+                      errorMessage={this.state.errorMessage}
                     />
 
                     <Dropdown
@@ -200,7 +210,6 @@ class HomeScreen extends Component {
                   <ScrollView>
                     <Card>
                       <Input value={this.state.typeValueTo}
-                      keyboardType={'numeric'}
                       />
                       <Dropdown
                         label={this.state.label}

@@ -3,14 +3,14 @@ import CalculateCelsius from './CalculateCelsius';
 import CalculateFahrenheit from './CalculateFahrenheit';
 import CalculateKelvin from './CalculateKelvin';
 
-const CalculateTemperature = (data, fromIndex, toIndex) => {
-  switch (fromIndex) {
+const CalculateTemperature = (data, quantityTypeFromIndex, quantityTypeToIndex) => {
+  switch (quantityTypeFromIndex) {
     case 0:
-      return CalculateFahrenheit(data, toIndex);
+      return CalculateFahrenheit(data, quantityTypeToIndex);
     case 1:
-      return CalculateCelsius(data, toIndex);
+      return CalculateCelsius(data, quantityTypeToIndex);
     case 2:
-      return CalculateKelvin(data, toIndex);
+      return CalculateKelvin(data, quantityTypeToIndex);
   }
 };
 export default CalculateTemperature;

@@ -8,24 +8,24 @@ import CalculateMicrometre from './CalculateMicrometre';
 import CalculateMile from './CalculateMile';
 import CalculateMillimetre from './CalculateMillimetre';
 
-const CalculateLengthType = (data,fromIndex, toIndex) => {
-  switch (fromIndex) {
+const CalculateLengthType = (data,quantityTypeFromIndex, quantityTypeToIndex) => {
+  switch (quantityTypeFromIndex) {
     case 0:
-      return CalculateKilometre(data, toIndex);
+      return CalculateKilometre(data, quantityTypeToIndex);
     case 1:
-      return CalculateMetre(data, toIndex);
+      return CalculateMetre(data, quantityTypeToIndex);
     case 2:
-      return CalculateCentimetre(data, toIndex);
+      return CalculateCentimetre(data, quantityTypeToIndex);
     case 3:
-      return CalculateMillimetre(data, toIndex);
+      return CalculateMillimetre(data, quantityTypeToIndex);
     case 4:
-      return CalculateMicrometre(data, toIndex);
+      return CalculateMicrometre(data, quantityTypeToIndex);
     case 5:
-      return CalculateMile(data, toIndex);
+      return CalculateMile(data, quantityTypeToIndex);
     case 6:
-      return CalculateFoot(data, toIndex);
+      return CalculateFoot(data, quantityTypeToIndex);
     case 7:
-      return CalculateInch(data, toIndex);
+      return CalculateInch(data, quantityTypeToIndex);
   }
 };
 export default CalculateLengthType;

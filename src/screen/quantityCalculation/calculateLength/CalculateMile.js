@@ -9,8 +9,8 @@ const lengthDefaultValues = [
   5280,
   63360,
 ];
-const CalculateMile = (data, toIndex) => {
-  let value = data * lengthDefaultValues[toIndex];
+const CalculateMile = (data, quantityTypeToIndex) => {
+  let value = data * lengthDefaultValues[quantityTypeToIndex];
   return value;
 };
 export default CalculateMile;

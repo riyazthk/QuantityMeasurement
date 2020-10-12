@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
 const lengthDefaultValues = [32, 1, 273.15];
-const CalculateCelsius = (data, toIndex) => {
-  if (toIndex === 0) {
-    let value = data * 1.8 + lengthDefaultValues[toIndex];
+const CalculateCelsius = (data, quantityTypeToIndex) => {
+  if (quantityTypeToIndex === 0) {
+    let value = data * 1.8 + lengthDefaultValues[quantityTypeToIndex];
     return value;
-  } else if (toIndex === 2) {
-    let value = data + lengthDefaultValues[toIndex];
+  } else if (quantityTypeToIndex === 2) {
+    let value = data + lengthDefaultValues[quantityTypeToIndex];
     return value;
-  } else if (toIndex === 1) {
-    let value = data * lengthDefaultValues[toIndex];
+  } else if (quantityTypeToIndex === 1) {
+    let value = data * lengthDefaultValues[quantityTypeToIndex];
     return value;
   }
 };

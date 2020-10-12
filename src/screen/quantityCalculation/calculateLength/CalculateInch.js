@@ -9,8 +9,8 @@ const lengthDefaultValues = [
   0.0833333,
   1,
 ];
-const CalculateInch = (data, toIndex) => {
-  let value = data * lengthDefaultValues[toIndex];
+const CalculateInch = (data, quantityTypeToIndex) => {
+  let value = data * lengthDefaultValues[quantityTypeToIndex];
   return value;
 };
 export default CalculateInch;

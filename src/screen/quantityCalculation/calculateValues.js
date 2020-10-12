@@ -3,21 +3,21 @@ import CalculateLengthType from './calculateLength/CalculateLengthType';
 import CalculateTemperature from './calculateTemperature/CalculateTemperature';
 import CalculateVolume from './calculateVolume/CalculateVolume';
 
-const CalculateValues = (data, value1, value2, index, fromIndex, toIndex) => {
-  if (index === 0) {
-    const result = CalculateLengthType(data, fromIndex, toIndex);
+const CalculateValues = (data, quantityTypeIndex, quantityTypeFromIndex, quantityTypeToIndex) => {
+  if (quantityTypeIndex === 0) {
+    const result = CalculateLengthType(data, quantityTypeFromIndex, quantityTypeToIndex);
     return result;
   }
-  if (index === 1) {
+  if (quantityTypeIndex === 1) {
     const result = CalculateTemperature(
       data,
-      fromIndex,
-      toIndex,
+      quantityTypeFromIndex,
+      quantityTypeToIndex,
     );
     return result;
   }
-  if (index === 2) {
-    const result = CalculateVolume(data, fromIndex, toIndex);
+  if (quantityTypeIndex === 2) {
+    const result = CalculateVolume(data, quantityTypeFromIndex, quantityTypeToIndex);
     return result;
   }
 };
